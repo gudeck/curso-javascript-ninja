@@ -94,25 +94,25 @@ Agora vamos brincar um pouco com o objeto criado:
 Qual o nome completo da pessoa? (Use a instrução para responder e comentários
 inline ao lado da instrução para mostrar qual foi a resposta retornada)
 */
-pessoa.nomeCompleto(); // Gustavo Zucolotto
+pessoa.nomeCompleto(); // Olá! Meu nome é Gustavo Zucolotto!
 
 /*
 Qual a idade da pessoa? (Use a instrução para responder e comentários
 inline ao lado da instrução para mostrar qual foi a resposta retornada)
 */
-pessoa.mostrarIdade(); // 20
+pessoa.mostrarIdade(); // Olá, eu tenho 20 anos!
 
 /*
 Qual o peso da pessoa? (Use a instrução para responder e comentários
 inline ao lado da instrução para mostrar qual foi a resposta retornada)
 */
-pessoa.mostrarPeso(); // 70.8
+pessoa.mostrarPeso(); // Eu peso 70.8Kg.
 
 /*
 Qual a altura da pessoa? (Use a instrução para responder e comentários
 inline ao lado da instrução para mostrar qual foi a resposta retornada)
 */
-pessoa.mostrarAltura(); // 1.82
+pessoa.mostrarAltura(); // Minha altura é 1.82m.
 
 /*
 Faça a `pessoa` fazer 3 aniversários.
@@ -178,28 +178,17 @@ método), que será concatenada com a frase de retorno, mostrando a resposta
 correta, de acordo com os dados inseridos no objeto.
 */
 pessoa.apresentacao = function() {
-  var parte1 = "Olá, eu sou";
+  var sexo = 'o';
+  var idade = 'anos';
+  var metragem = 'metros';
   
-  if(this.sexo === "Feminino")
-    parte1 += " a ";
-  else
-    parte1 += " o ";
-  
-  var parte2 = this.nome + " " + this.sobrenome + ", tenho " + this.idade;
-  
-  if(this.idade === 1)
-    parte2 += " ano, ";
-  else
-    parte2 += " anos, ";
-  
-  var parte3 = this.altura += ", meu peso é " + this.peso + " e, só hoje, eu já caminhei " + this.caminhouQuantosMetros;
-  
-  if(this.caminhouQuantosMetros === 1)
-    parte3 += " metro!";
-  else
-    parte3 += " metros!";
-  
-  return parte1 + parte2 + parte3;
+  return "Olá, eu sou " + sexo + " " +
+    pessoa.nome + " " +
+     pessoa.sobrenome + ", tenho " +
+       pessoa.idade + idade + ", " +
+        pessoa.altura + "m, meu peso é " +
+         pessoa.peso + "kg e, só hoje, eu já caminhei " +
+          pessoa.caminhouQuantosMetros + " " + metragem + "!";
 };
 
 // Agora, apresente-se ;)
