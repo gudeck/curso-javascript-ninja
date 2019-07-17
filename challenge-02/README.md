@@ -31,7 +31,7 @@ function novaFuncao(){
 novaFuncao();
 
 // Qual o retorno da função? (Use comentários de bloco).
-/* 'O valor da variável agora é 5' */
+/* O valor da variável agora é 5 */
 
 /*
 Crie uma função com as seguintes características:
@@ -41,18 +41,22 @@ Crie uma função com as seguintes características:
 3. O retorno da função deve ser a multiplicação dos 3 argumentos, somando `2` ao resultado da multiplicação.
 */
 function novaNovaFuncao(x, y, z){
-  if(x == null || y == null || z == null){
+  if(x === undefined || y === undefined || z === undefined){
     return 'Preencha todos os valores corretamente!';
   }
   
   return (x * y * z) + 2;
 }
+/*  Erros:
+      null tem que ser explicitamente inserido na variável, foi substuido por undefined (undefined significa que aquela variável não possui valor)
+      não foi usada comparação de tipos nas condições
+ */
 
 // Invoque a função criada acima, passando só dois números como argumento.
 novaNovaFuncao(1, 2);
 
 // Qual o resultado da invocação acima? (Use comentários para mostrar o valor retornado).
-// 'Preencha todos os valores corretamente!'
+// Preencha todos os valores corretamente!
 
 // Agora invoque novamente a função criada acima, mas passando todos os três argumentos necessários.
 novaNovaFuncao(1, 2, 3);
@@ -70,26 +74,24 @@ Crie uma função com as seguintes características:
 6. E ainda, se nenhuma das condições acima forem atendidas, retorne `null`.
 */
 function novaNovaNovaFuncao(x, y, z) {
-  if(x != null && y == null && z == null){
+  if(x !== undefined && y === undefined && z === undefined){
     return x;  
-  }else if(x == null && y != null && z == null){
-    return y;
-  }else if(x == null && y == null && z != null){
-    return z;
-  }else if(x != null && y != null && z == null){
+  }else if(x !== undefined && y !== undefined && z === undefined){
     return x + y;  
-  }else if(x != null && y == null && z != null){
-    return x + z;
-  }else if(x == null && y != null && z != null){
-    return y + z;
-  }else if(x != null && y != null && z != null){
+  }else if(x !== undefined && y !== undefined && z !== undefined){
     return (x + y) / z;
-  }else if(x == null && y == null && z == null){
+  }else if(x === undefined && y === undefined && z === undefined){
        return false;
   }else{
     return null;
   }
-}
+} 
+/*  Erros:
+      null tem que ser explicitamente inserido na variável, foi substuido por undefined (undefined significa que aquela variável não possui valor)
+      não foi usada comparação de tipos nas condições
+      haviam verificações desnecessárias, pois uma vez que algum dos primeiros argumentos fossem undefined a verificação das condições terminaria ali
+ */
+
 
 // Invoque a função acima utilizando todas as possibilidades (com nenhum argumento, com um, com dois e com três.) Coloque um comentário de linha ao lado da função com o resultado de cada invocação.
 novaNovaNovaFuncao(); // false
