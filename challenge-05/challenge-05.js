@@ -35,8 +35,14 @@ var queRecebe = ["string", 0, false, undefined, null];
 Invoque a função criada acima, fazendo-a retornar todos os valores do último
 array criado.
 */
-funcao1(queRecebe); // ["string", 0, false, undefined, null]
-
+funcao2(queRecebe, 0); // ["string", 0, false, undefined, null]
+funcao2(queRecebe, 1);
+funcao2(queRecebe, 2);
+funcao2(queRecebe, 3);
+funcao2(queRecebe, 4);
+/* Erros:
+    entendida errado, era pra usar a funcao2
+ */
 
 /*
 Crie uma função chamada `book`, que recebe um parâmetro, que será o nome do
@@ -71,40 +77,38 @@ function book(nomeLivro){
     }
   };
 
-  if(nomeLivro === undefined)
-    return livros;
-
-  return livros[nomeLivro];
+  return !nomeLivro ? livros : livros[nomeLivro];
 }
+/* Erros:
+    código melhorado agora usa ternário
+ */
+
 /*
 Usando a função criada acima, imprima o objeto com todos os livros.
 */
 book();
-/*  'Programando em Python': { quantidadePaginas: 16, autor: 'Livia', editora: 'Ifes' },
-    'Kama Sutra': { quantidadePaginas: 69, autor: 'Gustavo', editora: 'X' },
-    'MongoDB NINJA': { quantidadePaginas: 99, autor: 'Marlon', editora: '?' }
- */
 
 /*
 Ainda com a função acima, imprima a quantidade de páginas de um livro qualquer,
 usando a frase:
 "O livro [NOME_DO_LIVRO] tem [X] páginas!"
 */
-"O livro " + "Kama Sutra" + " tem " + book("Kama Sutra").quantidadePaginas + " páginas!";
-// 'O livro Kama Sutra tem 69 páginas!'
+var nomeLivro = "Kama Sutra";
+"O livro " + nomeLivro + " tem " + book(nomeLivro).quantidadePaginas + " páginas!";
 
 /*
 Ainda com a função acima, imprima o nome do autor de um livro qualquer, usando
 a frase:
 "O autor do livro [NOME_DO_LIVRO] é [AUTOR]."
 */
-"O autor do livro " + "Kama Sutra" + " é " + book("Kama Sutra").autor + ".";
-// 'O autor do livro Kama Sutra é Gustavo.'
+"O autor do livro " + nomeLivro + " é " + book(nomeLivro).autor + ".";
 
 /*
 Ainda com a função acima, imprima o nome da editora de um livro qualquer, usando
 a frase:
 "O livro [NOME_DO_LIVRO] foi publicado pela editora [NOME_DA_EDITORA]."
 */
-"O livro " + "Kama Sutra" + " foi publicado pela editora " + book("Kama Sutra").editora + ".";
-// 'O livro Kama Sutra foi publicado pela editora X.'
+"O livro " + nomeLivro + " foi publicado pela editora " + book(nomeLivro).editora + ".";
+/* Erros:
+    códigos melhorados pra reutilizar código
+ */
