@@ -8,11 +8,13 @@ equivalente booleano para o valor passado no argumento for `true`, ou `false`
 para o contrário.
 */
 var isTruthy = function(x) {
-  if(!!x)
-    return true;
-  else
-    return false;
-}
+  return !!x;
+};
+/* Erros:
+    faltava o ; pra terminar a instrução
+    não precisava do else
+    poderia ser ternário
+ */
 
 // Invoque a função criada acima, passando todos os tipos de valores `falsy`.
 isTruthy(0);
@@ -27,15 +29,18 @@ isTruthy(false);
 Invoque a função criada acima passando como parâmetro 10 valores `truthy`.
 */
 isTruthy(1);
-isTruthy("gustavo");
-isTruthy(true);
-isTruthy('0');
-isTruthy(22);
-isTruthy("sdasdas");
+isTruthy("Gustavo");
+isTruthy([]);
+isTruthy({});
+isTruthy(function() {});
+isTruthy(50 * 10);
 isTruthy(1 + 2);
 isTruthy(-312);
-isTruthy('pao');
+isTruthy('0');
 isTruthy('-0');
+/* Erros:
+    não estava errado, só foram adicionados outros tipos para exemplo
+ */
 
 /*
 Declare uma variável chamada `carro`, atribuindo à ela um objeto com as
@@ -115,15 +120,27 @@ mostrar quantos assentos ainda podem ser ocupados, com a frase:
 citado acima, no lugar de "pessoas".
 */
 carro.adicionarPessoas = function(pessoas) {
-  if(this.quantidadePessoas >= this.assentos)
+  var totalPessoas = this.quantidadePessoas + pessoas;
+  
+  if(this.quantidadePessoas === this.assentos && totalPessoas >= carro.assentos)
     return "O carro já está lotado!";
-  else if(this.quantidadePessoas < this.assentos && pessoas > this.assentos)
+  
+  if(totalPessoas > this.assentos)
     return "Só cabem mais " + (this.assentos - this.quantidadePessoas) === 1 ? " pessoa!" : " pessoas!";
   
-  this.quantidadePessoas += pessoas;
+  this.quantidadePessoas = totalPessoas;
   
   return "Já temos " + this.quantidadePessoas + " pessoas no carro!";
 };
+/* Erros:
+    algumas melhorias na lógica do método
+    a verificação de menor não era necessária pois se o número não for igual (primeiro if)
+    ou não for maior (segundo if), fica implícito que ele é menor
+    
+    adicionada verificação no primeiro if pra conseguir tirar pessoas do carro usando
+    esse mesmo método
+ */
+
 
 /*
 Agora vamos verificar algumas informações do carro. Para as respostas abaixo,
@@ -133,38 +150,45 @@ retornar algum valor.
 
 Qual a cor atual do carro?
 */
-carro.obterCor(); // Roxo
+carro.obterCor(); // "Roxo"
 
 // Mude a cor do carro para vermelho.
 carro.mudaCor("Vermelho");
 
 // E agora, qual a cor do carro?
-carro.obterCor(); // Vermelho
+carro.obterCor(); // "Vermelho"
 
 // Mude a cor do carro para verde musgo.
 carro.mudaCor("Verde Musgo");
 
 // E agora, qual a cor do carro?
-carro.obterCor(); // Verde Musgo
+carro.obterCor(); // "Verde Musgo"
+/* Erros:
+    foram adicionadas aspas pra identificar que o retorno das funções é string
+ */
 
 // Qual a marca e modelo do carro?
 carro.obterMarcaModelo(); // Esse carro é um Pão Doce
 
 // Adicione 2 pessoas no carro.
-carro.adicionarPessoas(2);
+carro.adicionarPessoas(2); // "Já temos 2 pessoas no carro!"
 
 // Adicione mais 4 pessoas no carro.
-carro.adicionarPessoas(4);
+carro.adicionarPessoas(4); // "Só cabem mais 3 pessoas!"
 
 // Faça o carro encher.
-// O carro já está cheio.
+carro.adicionarPessoas(3); // "Já temos 5 pessoas no carro!"
+/* Erros:
+    o a chamada do método com 4 não adicionaria pessoas ao carro, logo o carro não estaria cheio
+ */
 
 // Tire 4 pessoas do carro.
-carro.quantidadePessoas -= 4;
+carro.adicionarPessoas(-4); // "Já temos 1 pessoas no carro!"
 
 // Adicione 10 pessoas no carro.
-carro.adicionarPessoas(10);
+carro.adicionarPessoas(10); // "Só cabem mais 4 pessoas!"
 
 // Quantas pessoas temos no carro?
-// 2
+carro.quantidadePessoas; // 1
+
 ```
