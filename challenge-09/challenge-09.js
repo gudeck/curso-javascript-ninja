@@ -1,8 +1,12 @@
-/*
-  Crie uma IIFE que envolva completamente o código desse arquivo. Faça também a
-  indentação correta do código, para ficar dentro da IIFE.
-*/
 (function () {
+  /* Erros:
+    IIFE não cobria o código por inteiro
+   */
+
+  /*
+    Crie uma IIFE que envolva completamente o código desse arquivo. Faça também a
+    indentação correta do código, para ficar dentro da IIFE.
+  */
 
   /*
   Analise as funções abaixo (`myFunction`, `myFunction2` e `myFunction3`, e
@@ -74,9 +78,13 @@
 
       return callback(x, y);
 
-    }
+    };
 
   }
+
+  /* Erros:
+      falta de ; no retorno de calculator()
+   */
 
   /*
   Declare uma variável chamada `sum`, e atribua a ela a função `calculator`,
