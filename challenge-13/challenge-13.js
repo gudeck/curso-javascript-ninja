@@ -86,9 +86,7 @@
   Adicione os estados do `nordeste` ao array `brasil`. Esses estados devem
   ficar no mesmo nível que os estados já existentes, não em um array separado.
   */
-  nordeste.forEach(function (value) {
-    return brasil.push(value);
-  });
+  brasil = brasil.concat(nordeste);
 
   /*
   Mostre no console os estados em `newSudeste`.
@@ -173,7 +171,7 @@
 
   /*
   Filtre o array criado acima, retornando somente os estados que tiverem
-  ID par. Atribua o valor à uma variável chamada `filter`.
+  ID par. Atribua o valor à uma variável chamada `filter`.var
   */
   var filter = map.filter(function (value) {
     return value['id'] % 2 === 0;
