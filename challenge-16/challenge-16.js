@@ -37,10 +37,12 @@
   console.log('\nNome convertido à partir de um slug:');
 
   const fullName = 'gustavo-da-costa-zucolotto';
-  const notSlug = fullName.split('-');
-  for (let i = 0; i < notSlug.length; i++) {
-    notSlug[i] = notSlug[i].charAt(0).toUpperCase() + notSlug[i].slice(1);
-  }
+  const notSlug = fullName.split('-').map(nome =>
+    nome.charAt(0).toUpperCase() + nome.slice(1)
+  );
+  /* Erros:
+      deveria ter usado método de array ao invés de criar um loop
+   */
   console.log(fullName);
   console.log(notSlug.join(' '));
 
@@ -67,11 +69,14 @@
     'Renan',
     'Victor'
   ];
-  const unicaString = nomes.join(', ');
-  const indice = unicaString.lastIndexOf(',');
-  console.log(unicaString.substring(0, indice)
-    + unicaString.substring(indice).replace(', ', ' e ').concat(' são meus amigos'));
-
+  const unicaString = nomes.reduce((total, atual, indice) => {
+    let separador = nomes.length - 1 === indice ? ' e ' : ', ';
+    return total + separador + atual;
+  }).concat(' são meus amigos.');
+  /* Erros:
+      poderia ter usado método de array ao invés de fazer gambiarra
+   */
+  console.log(unicaString);
   /*
   Usando o replace(), faça a string "Roberto" virar "Roberta".
   Mostre o resultado no console.
@@ -79,7 +84,10 @@
   console.log('\nEra "Roberto", agora é:');
 
   const roberto = 'Roberto';
-  console.log(roberto.substring(0, 3) + roberto.substring(3).replace('o', 'a'));
+  console.log(roberto.replace('to', 'ta'));
+  /* Erros:
+      código estava complicado demais
+   */
 
   /*
   Mostre no console a parte "nando" da string "Fernando". Use o método que
@@ -101,11 +109,14 @@
   */
   console.log('\nNome com letras intercaladas entre caixa alta e baixa:');
 
-  const myName = 'Gustavo'.toUpperCase().split('');
-  for (let i = 0; i < myName.length; i++) {
-    if (i % 2 !== 0)
-      myName[i] = myName[i].toLowerCase();
-  }
+  const myName = 'Gustavo'
+    .split('')
+    .map((letra, index) =>
+      index % 2 === 0 ? letra.toUpperCase() : letra.toLowerCase());
+  /* Erros:
+      código simplificado
+   */
+
   console.log(myName.join(''));
 
 })();
