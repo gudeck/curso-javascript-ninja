@@ -67,10 +67,10 @@
     'Renan',
     'Victor'
   ];
-  let unicaString = nomes.join(', ');
+  const unicaString = nomes.join(', ');
   const indice = unicaString.lastIndexOf(',');
-  unicaString = (unicaString.slice(0, indice) + ' e' + unicaString.slice(indice + 1)).concat(' são meus amigos');
-  console.log(unicaString);
+  console.log(unicaString.substring(0, indice)
+    + unicaString.substring(indice).replace(', ', ' e ').concat(' são meus amigos'));
 
   /*
   Usando o replace(), faça a string "Roberto" virar "Roberta".
@@ -101,7 +101,7 @@
   */
   console.log('\nNome com letras intercaladas entre caixa alta e baixa:');
 
-  let myName = 'Gustavo'.toUpperCase().split('');
+  const myName = 'Gustavo'.toUpperCase().split('');
   for (let i = 0; i < myName.length; i++) {
     if (i % 2 !== 0)
       myName[i] = myName[i].toLowerCase();
