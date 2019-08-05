@@ -27,8 +27,10 @@ Envolva todo o código desse desafio em uma IIFE.
 
   console.log('\nJust Numbers:');
 
-  const justNumbers = [];
-  numberObjects.forEach(item => justNumbers.push(item.number));
+  const justNumbers = numberObjects.map(item => item.number);
+  /* Erros
+      nesse caso o uso do método map é mais correto que o forEach
+   */
 
   console.log((justNumbers));
 
@@ -93,8 +95,10 @@ Envolva todo o código desse desafio em uma IIFE.
 
   console.log('\nInversed Name:');
 
-  const inversedName = name.reduceRight((total, atual) => total + atual);
-
+  const inversedName = name.reduceRight((total, atual) => total + atual, '');
+  /* Erros:
+      adicionado segundo parâmetro para boas práticas de programação
+   */
   console.log(inversedName);
 
   /*
@@ -131,10 +135,13 @@ Envolva todo o código desse desafio em uma IIFE.
   console.log('\nE buscando a partir do último índice, o { number: 2 } existe?');
 
   console.log(
-    numberObjects.lastIndexOf({number: 2}) > -1
+    numberObjects.lastIndexOf({number: 2}, 2) > -1
       ? 'Existe um objeto { number: 2 } em numberObjects!'
       : 'Não existe um objeto { number: 2 } em numberObjects :('
   );
+  /* Erros:
+      a verificação a partir do índice 2 não estava sendo feita
+   */
 
   /*
   Verifique se `justMod2Or3` é um array. Se for, mostre-o no console, no
