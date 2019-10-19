@@ -16,25 +16,28 @@
     nome, `username` deve receber "Desconhecido".
     Com a resposta, mostre um alert com a mensagem "Bem vindo [USERNAME]!"
     */
-    let username;
-    if ((username = win.prompt("Qual o seu nome?")) === "")
-        username = 'Desconhecido';
+    //Curto-Circuito
+    //OU - Se o lado esquerdo for truthy atribui, senão atribui o lado direito
+    let username = prompt("Qual o seu nome?") || 'Desconhecido';
     win.alert(`Bem vindo ${username}!`);
+
     /*
     Agora, pergunte ao usuário "Qual o seu e-mail?", atribuindo o resultado à
     uma variável chamada `email`.
     */
     let email = win.prompt("Qual o seu e-mail?");
+
     /*
     - Selecione o input de "Nome", atribuindo-o à uma variável chamada
     `$inputUsername`.
     */
-    let $inputUsername = doc.querySelector("[type=text]");
+    let $inputUsername = doc.querySelector("input[type=text]");
+
     /*
     - Selecione o input de "Email", atribuindo-o à uma variável chamada
     `$inputEmail`.
     */
-    let $inputEmail = doc.querySelector("[type=email]");
+    let $inputEmail = doc.querySelector("input[type=email]");
 
     /*
     - Selecione o campo de "Mensagem", atribuindo-o à uma variável chamada
@@ -54,6 +57,7 @@
     */
     $inputUsername.value = username;
     $inputEmail.value = email;
+
     /*
     Adicione um listener de evento de click ao botão que faça o seguinte:
     1. Verificar se todos os campos estão preenchidos:
@@ -80,29 +84,18 @@
     */
     $button.addEventListener("click", (event) => {
         event.preventDefault();
-        if ($inputUsername.value === "") {
-            win.alert("Preencha o nome do usuário!");
-            return;
-        }
-        if ($inputEmail.value === "") {
-            win.alert("Preencha o e-mail!");
-            return;
-        }
-        if (isValidEmail($inputEmail.value) === false) {
-            console.log($inputEmail, $inputEmail.value);
-            win.alert("Entre com um e-mail válido!");
-            return;
-        }
-        if ($message.value === "") {
-            win.alert("Preencha a mensagem!");
-            return;
-        }
+        if (!$inputUsername.value)
+            return alert("Preencha o nome do usuário!");
+        if (!$inputEmail.value)
+            return alert("Preencha o e-mail!");
+        if (!isValidEmail($inputEmail.value))
+            return alert("Entre com um e-mail válido!");
+        if (!$message.value)
+            return alert("Preencha a mensagem!");
 
-        if (win.confirm("Tem certeza que deseja enviar o formulário?"))
-            win.alert("Enviado com sucesso!");
-        else
-            win.alert("Não enviado.")
-
+        if (confirm("Tem certeza que deseja enviar o formulário?"))
+            return alert("Enviado com sucesso!");
+        return alert("Não enviado.")
     });
 
     /*
